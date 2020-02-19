@@ -1,4 +1,4 @@
-# Haskell-practice
+# Haskell-learning
 
 This is a repository where I track all my Haskell exercises.
 
