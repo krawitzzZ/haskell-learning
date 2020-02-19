@@ -1,12 +1,17 @@
 module Basics
-  ( writeToConsole
+  ( basicsMain
   )
 where
 
 import           Data.List                      ( intercalate )
 
-writeToConsole :: IO ()
-writeToConsole = putStrLn "Yaikes, it works!"
+basicsMain :: IO ()
+basicsMain = do
+  putStrLn "Yaikes, it works!"
+  putStrLn ""
+  putStrLn "Basics:"
+  putStrLn $ "digitToWord: " ++ digitToWord 3567139838
+  putStrLn "\n"
 
 data Blah = Blah
 
