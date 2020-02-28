@@ -4,6 +4,7 @@ import           Basics
 import           Lists
 import           Cipher
 import           Folds
+import           Datatypes
 
 main :: IO ()
 main = do
@@ -11,3 +12,4 @@ main = do
   listsMain
   cipherMain
   foldsMain
+  datatypesMain
