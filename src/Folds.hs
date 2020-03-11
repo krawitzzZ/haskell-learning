@@ -1,7 +1,4 @@
-module Folds
-  ( foldsMain
-  )
-where
+module Folds where
 
 import           Data.Time
 

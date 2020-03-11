@@ -1,7 +1,4 @@
-module ProductSum
-  ( productSumMain
-  )
-where
+module ProductSum where
 
 import           Data.List
 
@@ -40,6 +37,3 @@ productSumMain = do
   putStrLn "ProductSum:"
   putStrLn $ "allProgrammes:\n" ++ intercalate "\n" (map show allProgrammers)
   putStrLn "\n"
-
-    -- - -Wall
-    -- - -Werror

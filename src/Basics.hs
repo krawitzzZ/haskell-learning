@@ -1,7 +1,4 @@
-module Basics
-  ( basicsMain
-  )
-where
+module Basics where
 
 import           Data.List                      ( intercalate )
 
@@ -12,8 +9,6 @@ basicsMain = do
   putStrLn "Basics:"
   putStrLn $ "digitToWord: " ++ digitToWord 3567139838
   putStrLn "\n"
-
-data Blah = Blah
 
 data WeekDay = Mon | Tue | Wed | Thu | Fri | Sat | Sun deriving (Show)
 
@@ -72,7 +67,6 @@ instance Eq a => Eq ( Which a ) where
   (==) (ThatOne x) (ThatOne x') = x == x'
   (==) _           _            = False
 
-
 summ :: (Eq a, Num a) => a -> a
 summ 0 = 0
 summ 1 = 1
@@ -81,12 +75,15 @@ summ x = x + summ (x - 1)
 multi :: (Integral a) => a -> a -> a
 multi x y = go x y 0 0
  where
-  go multiplier1 multiplier2 product count
+  go multiplier1 multiplier2 product' count
     | multiplier1 == 0 || multiplier2 == 0 = 0
-    | multiplier1 == 1                     = multiplier2
-    | multiplier2 == 1                     = multiplier1
-    | count == multiplier2                 = product
-    | otherwise = go (product + multiplier1) multiplier1 multiplier2 (count + 1)
+    | multiplier1 == 1 = multiplier2
+    | multiplier2 == 1 = multiplier1
+    | count == multiplier2 = product'
+    | otherwise = go (product' + multiplier1)
+                     multiplier1
+                     multiplier2
+                     (count + 1)
 
 data DividedResult a = Result (a, a) | DividedByZero deriving (Show)
 
@@ -100,8 +97,9 @@ division num denom = go num denom 0 isPositive where
 
 
 mc91 :: Integral a => a -> a
-mc91 x | x > 100  = x - 10
-       | x <= 100 = mc91 $ mc91 $ x + 11
+mc91 x | x > 100   = x - 10
+       | x <= 100  = mc91 $ mc91 $ x + 11
+       | otherwise = x
 
 
 digitToWord :: Int -> String

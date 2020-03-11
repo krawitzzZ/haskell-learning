@@ -1,4 +1,4 @@
 {
   "languageServerHaskell.useCustomHieWrapper": true,
-  "languageServerHaskell.useCustomHieWrapperPath": "/Users/nikita/.local/bin/hie-8.6.5"
+  "languageServerHaskell.useCustomHieWrapperPath": "hie-wrapper"
 }

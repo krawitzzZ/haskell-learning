@@ -8,8 +8,6 @@ import           Datatypes
 import           ProductSum
 import           BinaryTree
 
-foo = 1
-
 main :: IO ()
 main = do
   basicsMain

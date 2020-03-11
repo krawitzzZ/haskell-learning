@@ -3,8 +3,7 @@ module Classes where
 class (Num a) => ExampleClass a where
   lessByTwo :: a -> a
 
--- newtype ExampleData a = ExampleData a deriving (Show)
-data ExampleData a = ExampleData a deriving (Show)
+newtype ExampleData a = ExampleData a deriving (Show)
 
 instance Num a => Num (ExampleData a) where
   (+) (ExampleData x) (ExampleData x') = ExampleData $ x + x'

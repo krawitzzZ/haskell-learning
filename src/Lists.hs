@@ -1,7 +1,4 @@
-module Lists
-  ( listsMain
-  )
-where
+module Lists where
 
 -- list comprehension
 -- [x^y | x <- [1..5], y <- [2..10], rem x 2 == 0]
@@ -27,6 +24,7 @@ splitOn sep (x : xs) | null xs   = []
                      | otherwise = toList (x : xs)
   where toList ys = takeWhile (/= sep) ys : splitOn sep (dropWhile (/= sep) ys)
 
+sqr :: [Integer]
 sqr = [ x ^ 2 | x <- [1 .. 4] ]
 cub = [ y ^ 3 | y <- [1 .. 4] ]
 tuples = [ (x, y) | x <- sqr, y <- cub ]
@@ -68,14 +66,14 @@ squishAgain :: [[a]] -> [a]
 squishAgain = squishMap id
 
 myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
-myMaximumBy f []  = error "empty list"
-myMaximumBy f [x] = x
+myMaximumBy _ []  = error "empty list"
+myMaximumBy _ [x] = x
 myMaximumBy f (x : y : ls) | f x y == GT = myMaximumBy f (x : ls)
                            | otherwise   = myMaximumBy f (y : ls)
 
 myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
-myMinimumBy f []  = error "empty list"
-myMinimumBy f [x] = x
+myMinimumBy _ []  = error "empty list"
+myMinimumBy _ [x] = x
 myMinimumBy f (x : y : ls) | f x y == LT = myMinimumBy f (x : ls)
                            | otherwise   = myMinimumBy f (y : ls)
 

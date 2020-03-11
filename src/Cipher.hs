@@ -1,9 +1,4 @@
-module Cipher
-  ( caesar
-  , uncaesar
-  , cipherMain
-  )
-where
+module Cipher where
 
 import           Data.Char
 

@@ -1,11 +1,8 @@
-module Datatypes
-  ( datatypesMain
-  )
-where
+module Datatypes where
 
-data Price = Price Integer deriving (Eq, Show)
+newtype Price = Price Integer deriving (Eq, Show)
 
-data Size = Size Integer deriving (Eq, Show)
+newtype Size = Size Integer deriving (Eq, Show)
 
 data Manufacturer = Mini | Mazda | Tata deriving (Eq, Show)
 
@@ -37,7 +34,8 @@ areCars :: [Vehicle] -> Bool
 areCars = all isCar
 
 getManu :: Vehicle -> Manufacturer
-getManu (Car manu _) = manu
+getManu (Car   manu _) = manu
+getManu (Plane _    _) = Tata
 
 datatypesMain :: IO ()
 datatypesMain = do
