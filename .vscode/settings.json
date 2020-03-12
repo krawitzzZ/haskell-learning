@@ -1,4 +1,0 @@
-{
-  "languageServerHaskell.useCustomHieWrapper": true,
-  "languageServerHaskell.useCustomHieWrapperPath": "hie-wrapper"
-}
