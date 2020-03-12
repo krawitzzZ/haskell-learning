@@ -25,10 +25,18 @@ splitOn sep (x : xs) | null xs   = []
   where toList ys = takeWhile (/= sep) ys : splitOn sep (dropWhile (/= sep) ys)
 
 sqr :: [Integer]
-sqr = [ x ^ 2 | x <- [1 .. 4] ]
-cub = [ y ^ 3 | y <- [1 .. 4] ]
+sqr = [ x ^ (2 :: Integer) | x <- [1 .. 4] ]
+
+cub :: [Integer]
+cub = [ y ^ (3 :: Integer) | y <- [1 .. 4] ]
+
+tuples :: [(Integer, Integer)]
 tuples = [ (x, y) | x <- sqr, y <- cub ]
+
+tuplesLessThan :: [(Integer, Integer)]
 tuplesLessThan = [ (x, y) | x <- sqr, y <- cub, x < 50 && y < 50 ]
+
+amountOfTuplesLessThan :: Int
 amountOfTuplesLessThan = length tuplesLessThan
 
 
@@ -101,22 +109,28 @@ listsMain = do
   putStrLn $ "myAnd for [True, False]: " ++ show (myAnd [True, False])
   putStrLn $ "myOr for [False, True]: " ++ show (myOr [False, True])
   putStrLn $ "myOr for [False, False]: " ++ show (myOr [False, False])
-  putStrLn $ "myAny for even [1, 3, 5]: " ++ show (myAny even [1, 3, 5])
-  putStrLn $ "myAny for odd [1, 3, 5]: " ++ show (myAny odd [1, 3, 5])
-  putStrLn $ "myElem for 3 [1, 3, 5]: " ++ show (myElem 3 [1, 3, 5])
-  putStrLn $ "myElem for 2 [1, 3, 5]: " ++ show (myElem 2 [1, 3, 5])
-  putStrLn $ "myReverse for [1..5]: " ++ show (myReverse [1 .. 5])
-  putStrLn $ "squish for [[1,2], [3,4]]: " ++ show (squish [[1, 2], [3, 4]])
+  putStrLn $ "myAny for even [1, 3, 5]: " ++ show
+    (myAny even ([1, 3, 5] :: [Integer]))
+  putStrLn $ "myAny for odd [1, 3, 5]: " ++ show
+    (myAny odd ([1, 3, 5] :: [Integer]))
+  putStrLn $ "myElem for 3 [1, 3, 5]: " ++ show
+    (myElem (3 :: Integer) [1, 3, 5])
+  putStrLn $ "myElem for 2 [1, 3, 5]: " ++ show
+    (myElem (2 :: Integer) [1, 3, 5])
+  putStrLn $ "myReverse for [1..5]: " ++ show
+    (myReverse ([1 .. 5] :: [Integer]))
+  putStrLn $ "squish for [[1,2], [3,4]]: " ++ show
+    (squish ([[1, 2], [3, 4]] :: [[Integer]]))
   putStrLn $ "squishMap for (\\x -> 'WO ' ++ [x] ++ ' HOO ') '123': " ++ show
     (squishMap (\x -> "WO " ++ [x] ++ " HOO ") "123")
   putStrLn $ "squishAgain for [[1,2], [3,4]]: " ++ show
-    (squishAgain [[1, 2], [3, 4]])
+    (squishAgain ([[1, 2], [3, 4]] :: [[Integer]]))
   putStrLn $ "myMaximumBy for compare [1, 15, 209, 5]: " ++ show
-    (myMaximumBy compare [1, 15, 209, 5])
+    (myMaximumBy compare ([1, 15, 209, 5] :: [Integer]))
   putStrLn $ "myMinimumBy for compare [1, 15, 209, 5]: " ++ show
-    (myMinimumBy compare [1, 15, 209, 5])
+    (myMinimumBy compare ([1, 15, 209, 5] :: [Integer]))
   putStrLn $ "myMaximum for [1, 15, 209, 5]: " ++ show
-    (myMaximum [1, 15, 209, 5])
+    (myMaximum ([1, 15, 209, 5] :: [Integer]))
   putStrLn $ "myMinimum for [1, 15, 209, 5]: " ++ show
-    (myMinimum [1, 15, 209, 5])
+    (myMinimum ([1, 15, 209, 5] :: [Integer]))
   putStrLn "\n"
