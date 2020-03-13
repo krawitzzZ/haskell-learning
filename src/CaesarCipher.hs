@@ -1,20 +1,8 @@
-module Cipher where
+module CaesarCipher where
 
 import           Data.Char
 
 data Side = L | R deriving (Eq, Show, Ord)
-
-minLower :: Int
-minLower = ord 'a'
-
-maxLower :: Int
-maxLower = ord 'z'
-
-minCapit :: Int
-minCapit = ord 'A'
-
-maxCapit :: Int
-maxCapit = ord 'Z'
 
 caesar :: Side -> Int -> String -> String
 caesar side shift = map $ encode side shift
@@ -30,7 +18,6 @@ encode side shift char
   | char == ','  = '{'
   | char == '{'  = ','
   | char == '.'  = '.'
-  | char == '.'  = '.'
   | char == '!'  = '/'
   | char == '/'  = '!'
   | char == '?'  = '^'
@@ -44,11 +31,19 @@ encode side shift char
     if newCharPos <= high then newCharPos else low + (newCharPos - high) - 1
   getCharPosition L low high =
     if newCharPos >= low then newCharPos else high - (low - newCharPos) + 1
-  newCharPos = if side == R then ord char + shift else ord char - shift
+  newCharPos =
+    if side == R then ord char + getShift shift else ord char - getShift shift
+  getShift shift' = if shift' `div` lettersNum > 0
+    then getShift (shift' `mod` lettersNum)
+    else shift'
+  minLower   = ord 'a'
+  maxLower   = ord 'z'
+  minCapit   = ord 'A'
+  maxCapit   = ord 'Z'
+  lettersNum = maxLower - minLower + 1
 
-
-cipherMain :: IO ()
-cipherMain = do
+caesarCipherMain :: IO ()
+caesarCipherMain = do
   let sentence = "Hello there! What's up?"
   let tmp      = caesar R 15 sentence
   putStrLn "Cipher:"
