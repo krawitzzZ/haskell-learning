@@ -1,7 +1,5 @@
 module ProductSum where
 
-import           Data.List
-
 data OperatingSystem =
   GnuPlusLinux
   | OpenBSDPlusNevermindJustBSDStill

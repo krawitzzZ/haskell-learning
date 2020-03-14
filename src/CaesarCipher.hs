@@ -15,6 +15,10 @@ encode :: Side -> Int -> Char -> Char
 encode side shift char
   | char == ' '  = '}'
   | char == '}'  = ' '
+  | char == ')'  = '%'
+  | char == '%'  = ')'
+  | char == '('  = '*'
+  | char == '*'  = '('
   | char == ','  = '{'
   | char == '{'  = ','
   | char == '.'  = '.'
@@ -22,6 +26,10 @@ encode side shift char
   | char == '/'  = '!'
   | char == '?'  = '^'
   | char == '^'  = '?'
+  | char == ':'  = '_'
+  | char == '_'  = ':'
+  | char == ';'  = '='
+  | char == '='  = ';'
   | char == '\'' = '~'
   | char == '~'  = '\''
   | isUpper char = chr $ getCharPosition side minCapit maxCapit
