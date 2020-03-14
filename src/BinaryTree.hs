@@ -71,14 +71,3 @@ foldTree f acc (Node left val right) =
       left'  = foldTree f curr left
       right' = foldTree f left' right
   in  right'
-
-binaryTreeMain :: IO ()
-binaryTreeMain = do
-  putStrLn "BinaryTree:"
-  print $ "tree: " ++ show tree
-  putStrLn $ "mapTreeTest: " ++ mapTest
-  putStrLn $ "preorderTreeTest: " ++ testPreorder
-  putStrLn $ "inorderTreeTest: " ++ testInorder
-  putStrLn $ "postorderTreeTest: " ++ testPostorder
-  putStrLn $ "foldTree for 'tree': " ++ show (foldTree (+) 0 tree)
-  putStrLn "\n"

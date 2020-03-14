@@ -31,9 +31,3 @@ allProgrammers =
   | system   <- allOperatingSystems
   , language <- allLanguages
   ]
-
-productSumMain :: IO ()
-productSumMain = do
-  putStrLn "ProductSum:"
-  putStrLn $ "allProgrammes:\n" ++ intercalate "\n" (map show allProgrammers)
-  putStrLn "\n"

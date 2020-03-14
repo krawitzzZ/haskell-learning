@@ -41,13 +41,3 @@ encode side shift char
   minCapit   = ord 'A'
   maxCapit   = ord 'Z'
   lettersNum = maxLower - minLower + 1
-
-caesarCipherMain :: IO ()
-caesarCipherMain = do
-  let sentence = "Hello there! What's up?"
-  let tmp      = caesar R 15 sentence
-  putStrLn "Cipher:"
-  putStrLn $ "sentence: " ++ sentence
-  putStrLn $ "encoded: " ++ tmp
-  putStrLn $ "decoded: " ++ uncaesar R 15 tmp
-  putStrLn "\n"

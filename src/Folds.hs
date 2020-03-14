@@ -40,15 +40,3 @@ avgDb dis = dbSum / amount
  where
   dbSum  = fromIntegral $ sumDb dis
   amount = fromIntegral $ length $ filterDbNumber dis
-
-foldsMain :: IO ()
-foldsMain = do
-  putStrLn "Folds:"
-  putStrLn $ "theDatabase: " ++ show theDatabase
-  putStrLn $ "filterDbDate: " ++ show (filterDbDate theDatabase)
-  putStrLn $ "filterDbInteger: " ++ show (filterDbNumber theDatabase)
-  putStrLn $ "filterDbString: " ++ show (filterDbString theDatabase)
-  putStrLn $ "mostRecent: " ++ show (mostRecent theDatabase)
-  putStrLn $ "sumDb: " ++ show (sumDb theDatabase)
-  putStrLn $ "avgDb: " ++ show (avgDb theDatabase)
-  putStrLn "\n"

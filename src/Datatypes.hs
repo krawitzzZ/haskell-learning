@@ -36,15 +36,3 @@ areCars = all isCar
 getManu :: Vehicle -> Manufacturer
 getManu (Car   manu _) = manu
 getManu (Plane _    _) = Tata
-
-datatypesMain :: IO ()
-datatypesMain = do
-  putStrLn "Datatypes:"
-  putStrLn $ "isCar for 'myCar': " ++ show (isCar myCar)
-  putStrLn $ "isCar for 'doge': " ++ show (isCar doge)
-  putStrLn $ "isPlane for 'myCar': " ++ show (isPlane myCar)
-  putStrLn $ "isPlane for 'doge': " ++ show (isPlane doge)
-  putStrLn $ "areCars for '[myCar, urCar]': " ++ show (areCars [myCar, urCar])
-  putStrLn $ "areCars for '[myCar, doge]': " ++ show (areCars [myCar, doge])
-  putStrLn $ "getManu for 'myCar': " ++ show (getManu myCar)
-  putStrLn "\n"
