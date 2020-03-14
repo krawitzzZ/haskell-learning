@@ -2,14 +2,6 @@ module Basics where
 
 import           Data.List                      ( intercalate )
 
-basicsMain :: IO ()
-basicsMain = do
-  putStrLn "Yaikes, it works!"
-  putStrLn ""
-  putStrLn "Basics:"
-  putStrLn $ "digitToWord: " ++ digitToWord 3567139838
-  putStrLn "\n"
-
 data WeekDay = Mon | Tue | Wed | Thu | Fri | Sat | Sun deriving (Show)
 
 instance Eq WeekDay where
@@ -67,33 +59,35 @@ instance Eq a => Eq ( Which a ) where
   (==) (ThatOne x) (ThatOne x') = x == x'
   (==) _           _            = False
 
-summ :: (Eq a, Num a) => a -> a
-summ 0 = 0
-summ 1 = 1
-summ x = x + summ (x - 1)
+sum' :: Integer -> Integer
+sum' 0    = 0
+sum' 1    = 1
+sum' (-1) = -1
+sum' x    = x + sum' next where next = if x > 0 then x - 1 else x + 1
 
-multi :: (Integral a) => a -> a -> a
-multi x y = go x y 0 0
+product' :: Integer -> Integer -> Integer
+product' x y = go x y 0 0
  where
-  go multiplier1 multiplier2 product' count
-    | multiplier1 == 0 || multiplier2 == 0 = 0
-    | multiplier1 == 1 = multiplier2
-    | multiplier2 == 1 = multiplier1
-    | count == multiplier2 = product'
-    | otherwise = go (product' + multiplier1)
-                     multiplier1
-                     multiplier2
-                     (count + 1)
+  go m1 m2 result count
+    | m1 == 0 || m2 == 0 = 0
+    | m1 == 1            = m2
+    | m2 == 1            = m1
+    | m1 == -1           = -m2
+    | m2 == -1           = -m1
+    | count == abs m2    = result
+    | otherwise          = go m1 m2 (getResult result m1 m2) (count + 1)
+  getResult r m1' m2' = if m2' > 0 then r + m1' else r - m1'
 
-data DividedResult a = Result (a, a) | DividedByZero deriving (Show)
+data DividedResult a = DividedResult (a, a) | DividedByZero deriving (Show, Eq)
 
-division :: (Integral a) => a -> a -> DividedResult a
+division :: Integer -> Integer -> DividedResult Integer
 division num denom = go num denom 0 isPositive where
   isPositive = num > 0 && denom > 0 || num < 0 && denom < 0
   go n d count isPositiveResult
-    | d == 0        = DividedByZero
-    | abs n < abs d = Result (if isPositiveResult then count else (-count), n)
-    | otherwise     = go (abs n - abs d) d (count + 1) isPositiveResult
+    | d == 0 = DividedByZero
+    | abs n < abs d = DividedResult
+      (if isPositiveResult then count else (-count), n)
+    | otherwise = go (abs n - abs d) d (count + 1) isPositiveResult
 
 
 mc91 :: Integral a => a -> a
