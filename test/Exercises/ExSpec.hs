@@ -24,6 +24,8 @@ spec = parallel $ do
     it "returns `False` for `blah` and `wootbla`"
       $          isSubsequenceOf "blah" "wootbla"
       `shouldBe` False
+
+
   describe "capitalizeWords" $ do
     it "returns `[('hello', 'Hello'), ('world', 'World')]` for `hello world`"
       $          capitalizeWords "hello world"
@@ -39,3 +41,22 @@ spec = parallel $ do
     it "returns `[('', '')]` for empty string"
       $          capitalizeWords ""
       `shouldBe` [("", "")]
+
+
+  describe "capitalizeWord" $ do
+    it "returns `Hello` for `hello`" $ capitalizeWord "hello" `shouldBe` "Hello"
+    it "returns `Yo` for `yo`" $ capitalizeWord "yo" `shouldBe` "Yo"
+    it "returns `A` for `a`" $ capitalizeWord "a" `shouldBe` "A"
+    it "returns empty string for empty string" $ capitalizeWord "" `shouldBe` ""
+
+
+  describe "capitalizeParagraph" $ do
+    it "returns `Blah. Woot ha.` for `blah. woot ha.`"
+      $          capitalizeParagraph "blah. woot ha."
+      `shouldBe` "Blah. Woot ha."
+    it "returns `Blah. Ha. Ho ho ho. Sigh.` for `blah. ha. ho ho ho. sigh.`"
+      $          capitalizeParagraph "blah. ha. ho ho ho. sigh."
+      `shouldBe` "Blah. Ha. Ho ho ho. Sigh."
+    it "returns `Blah.    Ha.` for `blah.    ha.`"
+      $          capitalizeParagraph "blah.    ha."
+      `shouldBe` "Blah.    Ha."
