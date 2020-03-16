@@ -1,7 +1,7 @@
-module CaesarCipherSpec where
+module Ciphers.CaesarCipherSpec where
 
 import           Test.Hspec
-import           CaesarCipher
+import           Ciphers.CaesarCipher
 
 spec :: Spec
 spec = parallel $ do

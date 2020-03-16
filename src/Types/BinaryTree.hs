@@ -1,4 +1,4 @@
-module BinaryTree where
+module Types.BinaryTree where
 
 import           Data.List
 

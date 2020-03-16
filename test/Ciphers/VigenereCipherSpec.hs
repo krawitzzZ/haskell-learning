@@ -1,7 +1,7 @@
-module VigenereCipherSpec where
+module Ciphers.VigenereCipherSpec where
 
 import           Test.Hspec
-import           VigenereCipher
+import           Ciphers.VigenereCipher
 
 spec :: Spec
 spec = do

@@ -1,4 +1,4 @@
-module Classes where
+module Types.Classes where
 
 class (Num a) => ExampleClass a where
   lessByTwo :: a -> a

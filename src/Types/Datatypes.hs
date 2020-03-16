@@ -1,4 +1,4 @@
-module Datatypes where
+module Types.Datatypes where
 
 newtype Price = Price Integer deriving (Eq, Show)
 

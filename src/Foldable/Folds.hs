@@ -1,4 +1,4 @@
-module Folds where
+module Foldable.Folds where
 
 import           Data.Time
 

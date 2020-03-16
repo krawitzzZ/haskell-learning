@@ -1,4 +1,4 @@
-module Lists where
+module Foldable.Lists where
 
 -- list comprehension
 -- [x^y | x <- [1..5], y <- [2..10], rem x 2 == 0]

@@ -1,4 +1,4 @@
-module VigenereCipher
+module Ciphers.VigenereCipher
   ( vigenere
   , devigenere
   , Encryption(..)
@@ -8,7 +8,7 @@ where
 import           Data.Char
 import           Data.List
 import           Data.Maybe
-import qualified CaesarCipher                  as CC
+import qualified Ciphers.CaesarCipher          as CC
 
 data Encryption = Encrypt | Decrypt deriving (Eq, Show, Ord)
 

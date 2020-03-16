@@ -1,4 +1,4 @@
-module CaesarCipher
+module Ciphers.CaesarCipher
   ( caesar
   , uncaesar
   , Side(..)

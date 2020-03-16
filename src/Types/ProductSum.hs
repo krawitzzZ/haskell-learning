@@ -1,4 +1,4 @@
-module ProductSum where
+module Types.ProductSum where
 
 data OperatingSystem =
   GnuPlusLinux

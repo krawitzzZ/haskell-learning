@@ -1,8 +1,8 @@
-module BasicsSpec where
+module Core.BasicsSpec where
 
 import           Test.Hspec
 import           Test.QuickCheck
-import           Basics
+import           Core.Basics
 
 spec :: Spec
 spec = parallel $ do
