@@ -24,3 +24,18 @@ spec = parallel $ do
     it "returns `False` for `blah` and `wootbla`"
       $          isSubsequenceOf "blah" "wootbla"
       `shouldBe` False
+  describe "capitalizeWords" $ do
+    it "returns `[('hello', 'Hello'), ('world', 'World')]` for `hello world`"
+      $          capitalizeWords "hello world"
+      `shouldBe` [("hello", "Hello"), ("world", "World")]
+    it "returns list of 5 items for `hello my name is joe`"
+      $          capitalizeWords "hello my name is joe"
+      `shouldBe` [ ("hello", "Hello")
+                 , ("my"   , "My")
+                 , ("name" , "Name")
+                 , ("is"   , "Is")
+                 , ("joe"  , "Joe")
+                 ]
+    it "returns `[('', '')]` for empty string"
+      $          capitalizeWords ""
+      `shouldBe` [("", "")]

@@ -22,7 +22,8 @@ splitOn _ [] = []
 splitOn sep (x : xs) | null xs   = []
                      | x == sep  = toList xs
                      | otherwise = toList (x : xs)
-  where toList ys = takeWhile (/= sep) ys : splitOn sep (dropWhile (/= sep) ys)
+ where
+  toList xs' = takeWhile (/= sep) xs' : splitOn sep (dropWhile (/= sep) xs')
 
 sqr :: [Integer]
 sqr = [ x ^ (2 :: Integer) | x <- [1 .. 4] ]
