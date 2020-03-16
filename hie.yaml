@@ -4,3 +4,5 @@ cradle:
       component: "haskell-learning:lib"
     - path: ./test
       component: "haskell-learning:test:haskell-learning-test"
+    - path: ./app/Main.hs
+      component: "haskell-learning:exe:hl"

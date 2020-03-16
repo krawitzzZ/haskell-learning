@@ -1,4 +1,9 @@
-module CaesarCipher where
+module CaesarCipher
+  ( caesar
+  , uncaesar
+  , Side(..)
+  )
+where
 
 import           Data.Char
 
@@ -30,6 +35,8 @@ encode side shift char
   | char == '_'  = ':'
   | char == ';'  = '='
   | char == '='  = ';'
+  | char == '-'  = '&'
+  | char == '&'  = '-'
   | char == '\'' = '~'
   | char == '~'  = '\''
   | isUpper char = chr $ getCharPosition side minCapit maxCapit

@@ -1,0 +1,17 @@
+
+# HLint configuration file
+# https://github.com/ndmitchell/hlint
+
+# Not considered useful hints
+- ignore: {name: "Redundant do"}
+- ignore: {name: "Use section"}
+- ignore: {name: "Use camelCase"}
+- ignore: {name: "Use list comprehension"}
+- ignore: {name: "Redundant if"}
+- ignore: {name: "Avoid lambda"}
+- ignore: {name: "Eta reduce"}
+- ignore: {name: "Parse error"}
+- ignore: {name: "Use =="}
+- ignore: {name: "Evaluate"}
+- ignore: {name: "Use &&&"}
+- ignore: {name: "Redundant compare"}

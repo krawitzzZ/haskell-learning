@@ -25,11 +25,13 @@ dependencies:
 - HUnit
 - QuickCheck
 
+ghc-options: -Wall
+
 library:
   source-dirs: src
 
 executables:
-  haskell-learning-exe:
+  hl:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -37,7 +39,6 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     - -Wall
-    - -Werror
     dependencies:
     - haskell-learning
 
