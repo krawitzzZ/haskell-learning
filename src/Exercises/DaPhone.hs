@@ -17,7 +17,6 @@ class DaPhoneButton a where
   hasSymbol :: a -> Symbol -> Bool
   nextSymbol :: a -> Symbol -> Symbol
   getKeyPresses :: a -> Symbol -> KeyPress
-  getLetter :: a -> KeyPress -> Symbol
 
 data DaPhone = DaPhone
   {
@@ -43,7 +42,6 @@ instance DaPhoneButton PhoneButton where
 
   nextSymbol (Button keys) s = nextSymbol' keys keys
    where
-     -- TODO: handle more gracefully
     nextSymbol' [] _ = error "nextSymbol -> PhoneButton without symbols"
     nextSymbol' [s'] acc = if s' == s then head acc else nextSymbol' [] acc
     nextSymbol' (s' : ss) acc = if s' == s then head ss else nextSymbol' ss acc
@@ -59,9 +57,6 @@ instance DaPhoneButton PhoneButton where
       then presses
       else getPresses (nextSymbol btn c') presses + 1
 
-  getLetter _btn@(Button keys) (_, presses) =
-    if length keys == presses then head keys else keys !! presses
-
 daPhone :: DaPhone
 daPhone = DaPhone { one     = Button ['1', '.', ',']
                   , two     = Button ['2', 'a', 'b', 'c']
@@ -76,7 +71,6 @@ daPhone = DaPhone { one     = Button ['1', '.', ',']
                   , hashtag = Button ['#']
                   , asterix = Button ['*']
                   }
-
 
 
 buttons :: DaPhone -> [PhoneButton]
@@ -117,12 +111,6 @@ parseLetter ph c | Ch.isUpper c = toUpper [keyPresses]
 
 parseSentence :: DaPhone -> String -> [KeyPress]
 parseSentence ph st = concatMap (parseLetter ph) st
-
-writeLetter :: DaPhone -> KeyPress -> Char
-writeLetter ph kp = getLetter (buttonForKeyPress ph kp) kp
-
-writeSentence :: DaPhone -> [KeyPress] -> String
-writeSentence ph kp = map (writeLetter ph) kp
 
 conversation :: [String]
 conversation =
