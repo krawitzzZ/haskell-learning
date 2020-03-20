@@ -4,8 +4,6 @@ import           Test.Hspec
 import           Core.Either
 import           Core.Basics                    ( Person(..) )
 
--- TODO: write more tests
-
 spec :: Spec
 spec = parallel $ do
   describe "mkPerson" $ do
