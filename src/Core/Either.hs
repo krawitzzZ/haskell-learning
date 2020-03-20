@@ -15,9 +15,8 @@ checkAge age = case age >= 0 of
   False -> Left [LowAge]
 
 checkName :: Name -> Either [PersonInvalid] Name
-checkName name = case name /= "" of
-  True  -> Right name
-  False -> Left [EmptyName]
+checkName ""   = Left [EmptyName]
+checkName name = Right name
 
 mkPerson :: Name -> Age -> ValidatePerson Person
 mkPerson name age = mkPerson' (checkName name) (checkAge age)
