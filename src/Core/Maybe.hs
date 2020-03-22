@@ -18,7 +18,7 @@ splitWords str' =
   takeWhile (/= ' ') str' : splitWords (dropWhile (/= ' ') str')
 
 isVowel :: Char -> Bool
-isVowel c = c `elem` ['a', 'e', 'i', 'o', 'u', 'y']
+isVowel c = c `elem` "aeiou"
 
 notThe :: String -> Maybe String
 notThe the = if the == "the" then Nothing else Just the
@@ -48,3 +48,9 @@ countTheBeforeVowel str = countTheBeforeVowel' $ splitWords str
 
 countVowels :: String -> Integer
 countVowels str = fromIntegral $ length $ filter isVowel str
+
+-- Validate the word
+newtype Word' = Word' String deriving (Eq, Show)
+
+mkWord :: String -> Maybe Word'
+mkWord = undefined

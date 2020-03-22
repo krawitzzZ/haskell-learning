@@ -56,11 +56,11 @@ spec = parallel $ do
       countVowels "qwrt" `shouldBe` 0
       countVowels "    " `shouldBe` 0
     it "should return 1" $ do
-      countVowels "qwrty" `shouldBe` 1
+      countVowels "qwerty" `shouldBe` 1
       countVowels "  a " `shouldBe` 1
     it "should return 2" $ do
-      countVowels "qwerty" `shouldBe` 2
+      countVowels "qweerty" `shouldBe` 2
       countVowels "i a " `shouldBe` 2
     it "correctly count amount of vowels in the string" $ do
-      property $ \str -> countVowels str == fromIntegral
-        (length $ filter (\c -> c `elem` ['a', 'e', 'i', 'o', 'u', 'y']) str)
+      property $ \str ->
+        countVowels str == fromIntegral (length $ filter (`elem` "aeiou") str)
