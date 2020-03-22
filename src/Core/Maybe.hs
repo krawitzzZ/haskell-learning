@@ -20,9 +20,6 @@ splitWords str' =
 isVowel :: Char -> Bool
 isVowel c = c `elem` ['a', 'e', 'i', 'o', 'u', 'y']
 
--- isThe :: String -> Bool
--- isThe the = the == "the"
-
 notThe :: String -> Maybe String
 notThe the = if the == "the" then Nothing else Just the
 
