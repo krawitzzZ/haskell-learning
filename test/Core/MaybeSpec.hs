@@ -31,3 +31,20 @@ spec = parallel $ do
       replaceThe "what is the question?" `shouldBe` "what is a question?"
     it "should return the same string" $ do
       replaceThe "how are you doing?" `shouldBe` "how are you doing?"
+
+
+  describe "countTheBeforeVowel" $ do
+    it "should return 1" $ do
+      countTheBeforeVowel "the evil cow" `shouldBe` (1 :: Integer)
+    it "should return 2" $ do
+      countTheBeforeVowel "the evil cow and the alien" `shouldBe` (2 :: Integer)
+    it "should return 3" $ do
+      countTheBeforeVowel "the evil cow, the alien and the animal"
+        `shouldBe` (3 :: Integer)
+    it "should return 0" $ do
+      countTheBeforeVowel "an evil cow" `shouldBe` (0 :: Integer)
+    it "should return 0" $ do
+      countTheBeforeVowel "" `shouldBe` (0 :: Integer)
+      countTheBeforeVowel "a" `shouldBe` (0 :: Integer)
+      countTheBeforeVowel "a a" `shouldBe` (0 :: Integer)
+      countTheBeforeVowel "a " `shouldBe` (0 :: Integer)
