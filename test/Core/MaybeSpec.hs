@@ -1,6 +1,7 @@
 module Core.MaybeSpec where
 
 import           Test.Hspec
+import           Test.QuickCheck
 import           Core.Maybe
 import           Core.Basics                    ( Person(..) )
 
@@ -48,3 +49,18 @@ spec = parallel $ do
       countTheBeforeVowel "a" `shouldBe` (0 :: Integer)
       countTheBeforeVowel "a a" `shouldBe` (0 :: Integer)
       countTheBeforeVowel "a " `shouldBe` (0 :: Integer)
+
+
+  describe "countVowels" $ do
+    it "should return 0" $ do
+      countVowels "qwrt" `shouldBe` 0
+      countVowels "    " `shouldBe` 0
+    it "should return 1" $ do
+      countVowels "qwrty" `shouldBe` 1
+      countVowels "  a " `shouldBe` 1
+    it "should return 2" $ do
+      countVowels "qwerty" `shouldBe` 2
+      countVowels "i a " `shouldBe` 2
+    it "correctly count amount of vowels in the string" $ do
+      property $ \str -> countVowels str == fromIntegral
+        (length $ filter (\c -> c `elem` ['a', 'e', 'i', 'o', 'u', 'y']) str)

@@ -48,3 +48,6 @@ countTheBeforeVowel str = countTheBeforeVowel' $ splitWords str
           _       -> False
         rest = countTheBeforeVowel' (w' : ws)
     in  count + rest
+
+countVowels :: String -> Integer
+countVowels str = fromIntegral $ length $ filter isVowel str
