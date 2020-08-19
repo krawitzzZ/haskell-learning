@@ -59,7 +59,6 @@ instance Eq a => Eq ( Which a ) where
   (==) (ThatOne x) (ThatOne x') = x == x'
   (==) _           _            = False
 
-
 type Name = String
 
 type Age = Integer
