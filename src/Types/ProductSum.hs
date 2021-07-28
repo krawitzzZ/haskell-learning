@@ -1,27 +1,24 @@
 module Types.ProductSum where
 
 data OperatingSystem =
-  GnuPlusLinux
-  | OpenBSDPlusNevermindJustBSDStill
+  Linux
   | Mac
   | Windows
   deriving (Eq, Show)
 
 data ProgrammingLanguage =
   Haskell
-  | Agda
-  | Idris
-  | PureScript
+  | JavaScript
+  | Go
   deriving (Eq, Show)
 
 data Programmer = Programmer { os :: OperatingSystem , lang :: ProgrammingLanguage } deriving (Eq, Show)
 
 allOperatingSystems :: [OperatingSystem]
-allOperatingSystems =
-  [GnuPlusLinux, OpenBSDPlusNevermindJustBSDStill, Mac, Windows]
+allOperatingSystems = [Linux, Mac, Windows]
 
 allLanguages :: [ProgrammingLanguage]
-allLanguages = [Haskell, Agda, Idris, PureScript]
+allLanguages = [Haskell, JavaScript, Go]
 
 allProgrammers :: [Programmer]
 allProgrammers =
