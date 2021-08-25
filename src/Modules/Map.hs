@@ -57,6 +57,6 @@ listFromMap = Map.toList someMap
 toMap :: Ord k => [(k, String)] -> Map.Map k String
 toMap xs = Map.fromListWith (\v1 v2 -> v1 ++ ", " ++ v2) xs
 
-toBettermap :: Ord k => [(k, String)] -> Map.Map k [String]
-toBettermap xs =
+toBetterMap :: Ord k => [(k, String)] -> Map.Map k [String]
+toBetterMap xs =
   Map.fromListWith (\v1 v2 -> v1 ++ v2) $ map (\(k, v) -> (k, [v])) xs
