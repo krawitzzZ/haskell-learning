@@ -1,4 +1,4 @@
-module Modules.Map where
+module Modules.Set where
 
 import qualified Data.Set                      as Set
 

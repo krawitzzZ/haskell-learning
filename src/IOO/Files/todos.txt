@@ -1,0 +1,4 @@
+buy groceries
+wash the car
+wash the dishes
+learn haskell

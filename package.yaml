@@ -21,6 +21,7 @@ description:         Please see the README on GitHub at <https://github.com/kraw
 dependencies:
 - base >= 4.7 && < 5
 - containers
+- directory
 - time
 - hspec
 - HUnit
