@@ -23,6 +23,7 @@ dependencies:
 - containers
 - directory
 - random
+- bytestring
 - time
 - hspec
 - HUnit
