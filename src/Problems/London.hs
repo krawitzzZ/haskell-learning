@@ -1,0 +1,54 @@
+module Problems.London where
+
+import           System.Random                  ( getStdGen
+                                                , Random(randomRs)
+                                                )
+
+
+main :: IO ()
+main = do
+  rGen <- getStdGen
+  let systems =
+        take 150 $ randomRs ((10, 90) :: (Int, Int)) rGen ++ [10, 30, 0]
+      threes     = groupsOf 3 systems
+      roadSystem = map (\[a, b, c] -> Section a b c) threes
+      path       = optimalPath roadSystem
+      pathString = concatMap (show . fst) path
+      pathPrice  = sum $ map snd path
+  print systems
+  putStrLn $ "The best path to take is: " ++ pathString
+  putStrLn $ "The price is: " ++ show pathPrice
+
+data Section = Section { getA :: Int, getB :: Int, getC :: Int } deriving (Show)
+type RoadSystem = [Section]
+
+data Label = A | B | C deriving (Show)
+type Path = [(Label, Int)]
+
+roadStep :: (Path, Path) -> Section -> (Path, Path)
+roadStep (pathA, pathB) (Section a b c) =
+  let priceA          = sum $ map snd pathA
+      priceB          = sum $ map snd pathB
+      forwardPriceToA = priceA + a
+      crossPriceToA   = priceB + b + c
+      forwardPriceToB = priceB + b
+      crossPriceToB   = priceA + a + c
+      newPathToA      = if forwardPriceToA <= crossPriceToA
+        then (A, a) : pathA
+        else (C, c) : (B, b) : pathB
+      newPathToB = if forwardPriceToB <= crossPriceToB
+        then (B, b) : pathB
+        else (C, c) : (A, a) : pathA
+  in  (newPathToA, newPathToB)
+
+optimalPath :: RoadSystem -> Path
+optimalPath roadSystem =
+  let (bestAPath, bestBPath) = foldl roadStep ([], []) roadSystem
+  in  if sum (map snd bestAPath) <= sum (map snd bestBPath)
+        then reverse bestAPath
+        else reverse bestBPath
+
+groupsOf :: Int -> [a] -> [[a]]
+groupsOf 0 _  = undefined
+groupsOf _ [] = []
+groupsOf n xs = take n xs : groupsOf n (drop n xs)
