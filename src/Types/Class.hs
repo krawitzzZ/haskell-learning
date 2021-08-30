@@ -71,9 +71,11 @@ instance Functor Tree where
 -- kind of Either data type
 data OneOrAnother a b = One a | Another b deriving (Show, Eq, Ord)
 
+-- here fmap is: (Functor f) => fmap :: (b -> c) -> f b -> f c
+-- meaning we don't really care about `a` at all
 instance Functor (OneOrAnother a) where
-  fmap _ (One     x) = One x
-  fmap f (Another x) = Another (f x)
+  fmap _ (One     a) = One a
+  fmap f (Another b) = Another (f b)
 
 
 -- some more stuff about types and kinds
