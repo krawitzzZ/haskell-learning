@@ -120,3 +120,15 @@ infixr 5 .++
 (.++) :: List a -> List a -> List a
 Empty      .++ ys = ys
 (x :-: xs) .++ ys = x :-: (xs .++ ys)
+
+
+data Sample = Sample { a :: Int, b :: Int, c :: (Int, Int) } deriving (Eq, Show)
+
+sample :: Sample
+sample = Sample 1 2 (1, 2) -- Sample { a = 1, b = 2, c = (1, 2) }
+
+data Sample' a b  = Sample' { b' :: b, a' :: a } deriving (Eq, Show)
+
+sample' :: Sample' Int String
+-- here string goes first, because in record syntax b' goes first (which is type String in `Sample' Int String`)
+sample' = Sample' "String" 2  -- Sample' { a' = 2, b' = "String" }
