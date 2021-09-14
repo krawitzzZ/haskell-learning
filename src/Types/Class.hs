@@ -63,10 +63,10 @@ instance Functor Probably where
   fmap _ Nope        = Nope
   fmap f (Exactly a) = Exactly (f a)
 
--- Functor instance for Tree. and yes, linter complains for a reason
-instance Functor Tree where
-  fmap _ Leaf                = Leaf
-  fmap f (Node x left right) = Node (f x) (fmap f left) (fmap f right)
+-- Functor instance for Tree
+-- instance Functor Tree where
+--   fmap _ EmptyTree           = EmptyTree
+--   fmap f (Node x left right) = Node (f x) (fmap f left) (fmap f right)
 
 -- kind of Either data type
 data OneOrAnother a b = One a | Another b deriving (Show, Eq, Ord)

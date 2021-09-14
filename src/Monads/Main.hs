@@ -151,3 +151,13 @@ flist' = do
   x <- [1 .. 100]
   guard ('7' `elem` show x)
   return x
+
+ioStr :: Bool -> IO String
+ioStr cond = do
+  guard cond >> return "Here is some"
+
+prStr :: String -> IO ()
+prStr s = putStrLn $ "Here is what I got: " ++ s
+
+doit :: Bool -> IO ()
+doit cond = ioStr cond >>= prStr
