@@ -1,9 +1,8 @@
 module Monads.State where
 
-import           System.Random
-import           Control.Monad
-import           Control.Monad.State
-
+import Control.Monad
+import Control.Monad.State
+import System.Random
 
 type Stack = [Int]
 
@@ -52,7 +51,7 @@ stackStuff = do
 moreStack :: State Stack ()
 moreStack = do
   a <- stackManip
---   if a == 100 then stackStuff else return ()
+  --   if a == 100 then stackStuff else return ()
   when (a == 100) stackStuff
 
 stackyStack :: State Stack ()
