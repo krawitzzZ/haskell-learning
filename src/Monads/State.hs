@@ -72,3 +72,6 @@ threeCoins = do
 
 coins :: (Bool, Bool, Bool)
 coins = evalState threeCoins (mkStdGen 23)
+
+joinState :: Stack
+joinState = execState (join (state $ \s -> (push 10, 1 : 2 : s))) [0, 0, 0]
