@@ -17,7 +17,6 @@
   "extensions": [
     "haskell.haskell",
     "kahole.magit",
-    "esbenp.prettier-vscode",
     "codezombiech.gitignore",
     "maxgabriel.brittany"
   ],
