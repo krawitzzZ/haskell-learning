@@ -17,7 +17,7 @@
       "*.hs": "haskell"
     },
     "[haskell]": {
-      "editor.defaultFormatter": "sjurmillidahl.ormolu-vscode",
+      "editor.defaultFormatter": "MaxGabriel.brittany",
     },
     "hoogle-vscode.useCabalDependencies": true,
   },
@@ -26,7 +26,7 @@
     "haskell.haskell",
     "kahole.magit",
     "codezombiech.gitignore",
-    "sjurmillidahl.ormolu-vscode",
+    "maxgabriel.brittany",
     "ms-azuretools.vscode-docker",
     "github.copilot",
     "yzhang.markdown-all-in-one",
@@ -39,7 +39,7 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "stack install ormolu hlint hoogle",
+  "postCreateCommand": "stack install data-tree-print brittany hlint",
   // Comment out connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode"
 }
